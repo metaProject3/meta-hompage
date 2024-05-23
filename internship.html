@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://kit.fontawesome.com/a2fa6aac90.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="./assets/css/page.css" />
+    <title>Internship</title>
+    <style>
+        .Auto-button-container {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 1000;
+        }
+
+        .Auto-button {
+            text-decoration: none;
+            color: #fff; 
+            font-size: 20px;
+            background-color: #000000; 
+            padding: 10px 30px;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: background-color 0.3s ease; 
+        }
+
+        .nav-links {
+            position: fixed;
+            top: 50%;
+            left: 20px;
+            transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            z-index: 1000;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #fff; 
+            font-size: 20px;
+            background-color: #000000; 
+            padding: 3px 30px;
+            border-radius: 30px;
+            transition: background-color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            background-color: #555; 
+        }
+
+        .container {
+            margin-left: 150px; 
+        }
+    </style>
+</head>
+
+<body>
+    <div class="Auto-button-container">
+        <button class="Auto-button" onclick="toggleAutoScroll()">자동 스크롤 ON</button>
+    </div>
+
+
+    <div class="nav-links">
+        <a href="#year2021">2021</a>
+        <a href="#year2022">2022</a>
+        <a href="#year2023">2023</a>
+        <a href="#year2024">2024</a>
+    </div>
+
+    <div class="container">
+        <h1 style="position: fixed; top: 0; left: 0; background-color: #000000; padding: 10px; z-index: 1000;">META 인턴십</h1>
+
+        <div class="main_page">
+        </div>
+        <div class="persist" id="year2021">
+            <div class="frame">
+                <div class="2021">
+                    <h1>2021</h1>
+                    <ul>
+                        <li>
+                            <p>$$$$</p>
+                        </li>
+                        <li>
+                            <p>$$$$</p>
+                        </li>
+                        <li>
+                            <p>$$$$</p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="persist" id="year2022">
+            <div class="frame">
+                <div class="2022">
+                    <h1>2022</h1>
+                    <ul>
+                        <li>
+                            <p>$$$$</p>
+                        </li>
+                        <li>
+                            <p>$$$$</p>
+                        </li>
+                        <li>
+                            <p>$$$$</p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="persist" id="year2023">
+            <div class="frame">
+                <div class="2023">
+                    <h1>2023</h1>
+                    <ul>
+                        <li>
+                            <p>$$$$</p>
+                        </li>
+                        <li>
+                            <p>$$$$</p>
+                        </li>
+                        <li>
+                            <p>$$$$</p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="persist" id="year2024">
+            <div class="frame">
+                <div class="2024">
+                    <h1>2024</h1>
+                    <ul>
+                        <li>
+                            <p>$$$$</p>
+                        </li>
+                        <li>
+                            <p>$$$$</p>
+                        </li>
+                        <li>
+                            <p>$$$$</p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const sections = document.querySelectorAll('.persist');
+            sections[0].scrollIntoView({ behavior: 'smooth' }); // year2021 섹션으로 스크롤
+        });
+        
+        document.querySelector('.main_page').style.backgroundImage = 'url(/assets/img/globe-white.png)';
+
+        let observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = 1;
+                } else {
+                    entry.target.style.opacity = 0;
+                }
+            });
+        }, { threshold: 0.5 });
+
+        let sections = document.querySelectorAll('.container > div');
+        sections.forEach((section) => {
+            section.style.transition = 'opacity 0.5s ease-in-out';
+            observer.observe(section);
+        });
+
+        let isAutoScroll = true;
+
+        function toggleAutoScroll() {
+            isAutoScroll = !isAutoScroll;
+            const button = document.querySelector('.Auto-button');
+            button.innerText = `자동 스크롤 ${isAutoScroll ? 'ON' : 'OFF'}`;
+        }
+        window.onload = function() {
+            const sections = document.querySelectorAll('.persist');
+            let index = 0;
+            const scrollInterval = setInterval(() => {
+                if (isAutoScroll) {
+                    sections[index].scrollIntoView({ behavior:'smooth' });
+                    index = (index + 1) % sections.length;
+                }
+            }, 3000);
+        };
+    </script>
+</body>
+
+</html>
