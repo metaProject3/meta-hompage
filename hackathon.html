@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hackathon Projects</title>
+    <style>
+        body {
+            background-color: black;
+            color: white;
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            width: 80%;
+            margin: auto;
+            padding-top: 20px;
+        }
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 0;
+        }
+        .header h1 {
+            margin: 0;
+        }
+        .project-card {
+            display: flex;
+            align-items: center;
+            background-color: #2a2a2a;
+            border-radius: 10px;
+            margin: 15px 0;
+            padding: 10px;
+        }
+        .project-card img {
+            width: 100px;
+            height: 100px;
+            border-radius: 10px;
+        }
+        .project-details {
+            flex-grow: 1;
+            margin-left: 20px;
+        }
+        .project-details h2 {
+            margin: 0;
+            font-size: 1.2em;
+        }
+        .project-details p {
+            margin: 5px 0 10px;
+        }
+        .project-details .team-button {
+            background-color: #4a4a4a;
+            border: none;
+            border-radius: 5px;
+            padding: 5px 10px;
+            color: white;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        .project-details .team-button:hover {
+            background-color: #6a6a6a;
+        }
+        .arrow-button {
+            font-size: 1.5em;
+            color: white;
+            text-decoration: none;
+            margin-left: 10px;
+            margin-right: 10px;
+            cursor: pointer;
+        }
+
+        @media (min-width: 1200px) {
+            .container {
+                width: 80%;
+            }
+        }
+
+        @media (min-width: 1300px) {
+            .container {
+                width: 70%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>
+                <div style="color:rgba(169, 169, 169, 0.779)">커리어 </div>
+                <div>해커톤</div>
+            </h1>
+            <div class="navigation" style="margin-top: 50px;">
+                <span class="arrow-button" onclick="previousBatch()">&lt;</span>
+                <span id="batch-label">1기</span>
+                <span class="arrow-button" onclick="nextBatch()">&gt;</span>
+            </div>
+        </div>
+
+        <div id="project-cards"></div>
+    </div>
+
+    <script>
+        const batches = [
+            [
+                { id: 1, title: "프로젝트명1", description: "프로젝트 소개", team: "팀명", image: "project-image.jpg" },
+                { id: 2, title: "프로젝트명1", description: "프로젝트 소개", team: "팀명", image: "project-image.jpg" },
+                { id: 3, title: "프로젝트명1", description: "프로젝트 소개", team: "팀명", image: "project-image.jpg" },
+                { id: 4, title: "프로젝트명1", description: "프로젝트 소개", team: "팀명", image: "project-image.jpg" },
+                { id: 4, title: "프로젝트명1", description: "프로젝트 소개", team: "팀명", image: "project-image.jpg" }
+            ],
+            [
+                { id: 5, title: "프로젝트명2", description: "프로젝트 소개2", team: "팀명2", image: "project-image2.jpg" },
+                { id: 6, title: "프로젝트명2", description: "프로젝트 소개2", team: "팀명2", image: "project-image2.jpg" },
+                { id: 7, title: "프로젝트명2", description: "프로젝트 소개2", team: "팀명2", image: "project-image2.jpg" },
+                { id: 8, title: "프로젝트명2", description: "프로젝트 소개2", team: "팀명2", image: "project-image2.jpg" }
+            ]
+        ];
+
+        let currentBatch = 0;
+
+        function renderProjects() {
+            const projectCardsContainer = document.getElementById("project-cards");
+            projectCardsContainer.innerHTML = "";
+            const batch = batches[currentBatch];
+            batch.forEach(project => {
+                const projectCard = document.createElement("div");
+                projectCard.className = "project-card";
+                projectCard.innerHTML = `
+                    <img src="${project.image}" alt="Project Image">
+                    <div class="project-details">
+                        <h2>${project.title}</h2>
+                        <p>${project.description}</p>
+                        <button class="team-button">${project.team}</button>
+                    </div>
+                    <span class="arrow-button" onclick="window.location.href='projects/${project.id}'">&#8250;</span>
+                `;
+                projectCardsContainer.appendChild(projectCard);
+            });
+            document.getElementById("batch-label").textContent = `${currentBatch + 1}기`;
+        }
+
+        function nextBatch() {
+            if (currentBatch < batches.length - 1) {
+                currentBatch++;
+                renderProjects();
+            }
+        }
+
+        function previousBatch() {
+            if (currentBatch > 0) {
+                currentBatch--;
+                renderProjects();
+            }
+        }
+
+        renderProjects();
+    </script>
+</body>
+</html>
+
