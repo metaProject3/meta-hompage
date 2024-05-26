@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>프로젝트 상세페이지</title>
+    <link rel="stylesheet" href="./assets/css/page.css" />
+    <style>
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .project-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        .project-header img {
+            width: 200px;
+            height: 150px;
+            object-fit: cover;
+            margin-right: 20px;
+            margin-top: 50px;
+        }
+        .project-info h1 {
+            margin-top: 0;
+        }
+        .project-summary, .project-description, .project-ui, .project-team {
+            margin-bottom: 40px;
+        }
+        .project-team ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        .project-team li {
+            margin-bottom: 10px;
+        }
+        .project-team a {
+            color: blue;
+            text-decoration: none;
+        }
+        .project-team a:hover {
+            text-decoration: underline;
+        }
+        .ui-images {
+            display: flex;
+            overflow-x: scroll;
+            white-space: nowrap;
+        }
+        .ui-images img {
+            min-width: 200px;
+            min-height: auto;
+            margin-right: 10px;
+        }
+        .ui-images::-webkit-scrollbar {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+      <div class="project-details">
+        <div class="project-header">
+          <img src="project-image.jpg" alt="프로젝트 이미지">
+          <div class="project-info">
+            <h1 id="project-title"></h1>
+            <p id="project-description"></p>
+            <p id="team-name"></p>
+          </div>
+        </div>
+        <hr>
+        <div class="project-summary">
+          <h2>프로젝트 요약</h2>
+          <p id="project-summary"></p>
+        </div>
+        <div class="project-description">
+          <h2>프로젝트 설명</h2>
+          <p id="project-details">명</p>
+        </div>
+        <div class="project-ui">
+          <h2>프로젝트 UI</h2>
+          <div class="ui-images"></div>
+        </div>
+        <div class="project-team">
+          <h2>프로젝트 팀원</h2>
+          <ul id="project-team-members"></ul>
+        </div>
+      </div>
+    </div>
+  
+    <script>
+      const projectData = [
+        {
+          id: 1,
+          title: "프로젝트명1",
+          description: "프로젝트 소개1",
+          team: "팀명1",
+          summary: "해당 프로젝트에 대한 요약 설명1",
+          details: "해당 프로젝트에 대한 설명1",
+          uiImages: ["ui-image1.jpg", "ui-image1.jpg", "ui-image1.jpg", "ui-image1.jpg", "ui-image1.jpg", "ui-image1.jpg", "ui-image1.jpg", "ui-image1.jpg"],
+          teamMembers: [
+            { name: "팀원1_1", githubUrl: "https://github.com/팀원1_1" },
+            { name: "팀원1_2", githubUrl: "https://github.com/팀원1_2" }
+          ]
+        },
+        {
+          id: 2,
+          title: "프로젝트명2",
+          description: "프로젝트 소개2",
+          team: "팀명2",
+          summary: "해당 프로젝트에 대한 요약 설명2",
+          details: "해당 프로젝트에 대한 설명2",
+          uiImages: ["ui-image2.jpg", "ui-image2.jpg", "ui-image2.jpg", "ui-image2.jpg", "ui-image2.jpg", "ui-image2.jpg", "ui-image2.jpg", "ui-image2.jpg"],
+          teamMembers: [
+            { name: "팀원2_1", githubUrl: "https://github.com/팀원2_1" },
+            { name: "팀원2_2", githubUrl: "https://github.com/팀원2_2" }
+          ]
+        },
+        {
+          id: 3,
+          title: "프로젝트명3",
+          description: "프로젝트 소개3",
+          team: "팀명3",
+          summary: "해당 프로젝트에 대한 요약 설명3",
+          details: "해당 프로젝트에 대한 설명3",
+          uiImages: ["ui-image3.jpg", "ui-image3.jpg", "ui-image3.jpg", "ui-image3.jpg", "ui-image3.jpg", "ui-image3.jpg", "ui-image3.jpg", "ui-image3.jpg"],
+          teamMembers: [
+            { name: "팀원3_1", githubUrl: "https://github.com/팀원3_1" },
+            { name: "팀원3_2", githubUrl: "https://github.com/팀원3_2" }
+          ]
+        },
+        {
+          id: 4,
+          title: "프로젝트명4",
+          description: "프로젝트 소개4",
+          team: "팀명4",
+          summary: "해당 프로젝트에 대한 요약 설명4",
+          details: "해당 프로젝트에 대한 설명4",
+          uiImages: ["ui-image4.jpg", "ui-image4.jpg", "ui-image4.jpg", "ui-image4.jpg", "ui-image4.jpg", "ui-image4.jpg", "ui-image4.jpg", "ui-image4.jpg"],
+          teamMembers: [
+            { name: "팀원4_1", githubUrl: "https://github.com/팀원4_1" },
+            { name: "팀원4_2", githubUrl: "https://github.com/팀원4_2" }
+          ]
+        },
+        {
+          id: 5,
+          title: "프로젝트명5",
+          description: "프로젝트 소개5",
+          team: "팀명5",
+          summary: "해당 프로젝트에 대한 요약 설명5",
+          details: "해당 프로젝트에 대한 설명5",
+          uiImages: ["ui-image5.jpg", "ui-image5.jpg", "ui-image5.jpg", "ui-image5.jpg", "ui-image5.jpg", "ui-image5.jpg", "ui-image5.jpg", "ui-image5.jpg"],
+          teamMembers: [
+            { name: "팀원5_1", githubUrl: "https://github.com/팀원5_1" },
+            { name: "팀원5_2", githubUrl: "https://github.com/팀원5_2" }
+          ]
+        },
+        {
+          id: 6,
+          title: "프로젝트명6",
+          description: "프로젝트 소개6",
+          team: "팀명6",
+          summary: "해당 프로젝트에 대한 요약 설명6",
+          details: "해당 프로젝트에 대한 설명6",
+          uiImages: ["ui-image6.jpg", "ui-image6.jpg", "ui-image6.jpg", "ui-image6.jpg", "ui-image6.jpg", "ui-image6.jpg", "ui-image6.jpg", "ui-image6.jpg"],
+          teamMembers: [
+            { name: "팀원6_1", githubUrl: "https://github.com/팀원6_1" },
+            { name: "팀원6_2", githubUrl: "https://github.com/팀원6_2" }
+          ]
+        }
+      ];
+
+      async function fetchProjectData(projectId) {
+        const project = projectData.find(item => item.id === Number(projectId));
+        if (project) {
+          return project;
+        } else {
+          throw new Error(`프로젝트 ID ${projectId}에 해당하는 데이터가 없습니다.`);
+        }
+      }  
+
+      async function displayProjectDetails() {
+        const urlParams = new URLSearchParams(window.location.search);
+        const projectId = urlParams.get('projectId');
+
+        try {
+          const project = await fetchProjectData(projectId);
+
+          document.getElementById('project-title').textContent = project.title;
+          document.getElementById('project-description').textContent = project.description;
+          document.getElementById('team-name').textContent = project.team;
+          document.getElementById('project-summary').textContent = project.summary;
+          document.getElementById('project-details').textContent = project.details;
+
+          const uiImagesContainer = document.querySelector('.ui-images');
+          uiImagesContainer.innerHTML = '';
+          project.uiImages.forEach(imageUrl => {
+            const img = document.createElement('img');
+            img.src = imageUrl;
+            img.alt = '프로젝트 UI 이미지';
+            uiImagesContainer.appendChild(img);
+          });
+
+          const teamMembersContainer = document.getElementById('project-team-members');
+          teamMembersContainer.innerHTML = '';
+          project.teamMembers.forEach(member => {
+            const li = document.createElement('li');
+            li.textContent = `${member.name} - `;
+            const link = document.createElement('a');
+            link.href = member.githubUrl;
+            link.textContent = member.githubUrl;
+            li.appendChild(link);
+            teamMembersContainer.appendChild(li);
+          });
+        } catch (error) {
+          console.error(error);
+          // 에러 처리 로직 추가 (예: 사용자에게 에러 메시지 표시)
+        }
+      }
+
+    window.onload = displayProjectDetails;
+    </script>
+  </body>
+</html>
