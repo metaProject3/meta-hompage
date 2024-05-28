@@ -4,10 +4,18 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script src="https://kit.fontawesome.com/a2fa6aac90.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="./assets/css/page.css" />
     <title>Internship</title>
     <style>
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 0;
+        }
+        .header h1 {
+            margin: 0;
+        }
         .Auto-button-container {
             position: fixed;
             top: 20px;
@@ -18,14 +26,14 @@
 
         .Auto-button {
             text-decoration: none;
-            color: #fff; 
+            color: #fff;
             font-size: 20px;
-            background-color: #000000; 
+            background-color: #000000;
             padding: 10px 30px;
             border: none;
             border-radius: 30px;
             cursor: pointer;
-            transition: background-color 0.3s ease; 
+            transition: background-color 0.3s ease;
         }
 
         .nav-links {
@@ -41,20 +49,90 @@
 
         .nav-links a {
             text-decoration: none;
-            color: #fff; 
+            color: #fff;
             font-size: 20px;
-            background-color: #000000; 
+            background-color: #000000;
             padding: 3px 30px;
             border-radius: 30px;
             transition: background-color 0.3s ease;
         }
 
         .nav-links a:hover {
-            background-color: #555; 
+            background-color: #555;
         }
 
         .container {
-            margin-left: 150px; 
+            margin-left: 150px;
+        }
+
+        ::-webkit-scrollbar {
+            width: 12px;
+            height: 12px;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background-color: #0f33ff;
+            border-radius: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background-color: black;
+            border-radius: 10px;
+        }
+
+        .gallery {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .gallery-item {
+            flex: 1 1 calc(10% - 5px);
+            cursor: pointer;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            padding-top: 60px;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgb(0, 0, 0);
+            background-color: rgba(0, 0, 0, 0.9);
+        }
+
+        .modal-content {
+            margin: auto;
+            display: block;
+            width: 80%;
+            max-width: 700px;
+        }
+
+        .close {
+            position: absolute;
+            top: 15px;
+            right: 35px;
+            color: #f1f1f1;
+            font-size: 40px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: #bbb;
+            text-decoration: none;
+            cursor: pointer;
         }
     </style>
 </head>
@@ -70,28 +148,23 @@
         <a href="#year2022">2022</a>
         <a href="#year2023">2023</a>
         <a href="#year2024">2024</a>
+        <a href="#internship_img">사진</a>
     </div>
 
     <div class="container">
-        <h1 style="position: fixed; top: 0; left: 0; background-color: #000000; padding: 10px; z-index: 1000;">META 인턴십</h1>
-
-        <div class="main_page">
+        <div class="persist" id="header">
+            <h1>
+                <div style="color:rgba(169, 169, 169, 0.779)">커리어 </div>
+                <div>인턴십</div>
+            </h1>
         </div>
+    <div class="main_page"></div>
         <div class="persist" id="year2021">
             <div class="frame">
                 <div class="2021">
                     <h1>2021</h1>
-                    <ul>
-                        <li>
-                            <p>$$$$</p>
-                        </li>
-                        <li>
-                            <p>$$$$</p>
-                        </li>
-                        <li>
-                            <p>$$$$</p>
-                        </li>
-                    </ul>
+                    <p>$$$$</p>
+                    <img src="./assets/img/intern1.jpg" alt="Image 1" style="width: 50%;">
                 </div>
             </div>
         </div>
@@ -99,17 +172,8 @@
             <div class="frame">
                 <div class="2022">
                     <h1>2022</h1>
-                    <ul>
-                        <li>
-                            <p>$$$$</p>
-                        </li>
-                        <li>
-                            <p>$$$$</p>
-                        </li>
-                        <li>
-                            <p>$$$$</p>
-                        </li>
-                    </ul>
+                    <p>$$$$</p>
+                    <img src="./assets/img/intern2.jpg" alt="Image 2" style="height: 300px;">
                 </div>
             </div>
         </div>
@@ -117,17 +181,8 @@
             <div class="frame">
                 <div class="2023">
                     <h1>2023</h1>
-                    <ul>
-                        <li>
-                            <p>$$$$</p>
-                        </li>
-                        <li>
-                            <p>$$$$</p>
-                        </li>
-                        <li>
-                            <p>$$$$</p>
-                        </li>
-                    </ul>
+                    <p>$$$$</p>
+                    <img src="./assets/img/intern3.jpg" alt="Image 3" style="height: 300px;">
                 </div>
             </div>
         </div>
@@ -135,17 +190,31 @@
             <div class="frame">
                 <div class="2024">
                     <h1>2024</h1>
-                    <ul>
-                        <li>
-                            <p>$$$$</p>
-                        </li>
-                        <li>
-                            <p>$$$$</p>
-                        </li>
-                        <li>
-                            <p>$$$$</p>
-                        </li>
-                    </ul>
+                    <p>$$$$</p>
+                    <img src="./assets/img/intern4.jpg" alt="Image 4" style="height: 300px">
+                </div>
+            </div>
+        </div>
+        <div class="persist" id="internship_img">
+            <div class="frame">
+                <h1>인턴십 사진</h1>
+                <div class="gallery">
+                    <div class="gallery-item" onclick="openModal('image1')">
+                        <img id="image1" src="./assets/img/intern1.jpg" alt="Image 1">
+                    </div>
+                    <div class="gallery-item" onclick="openModal('image2')">
+                        <img id="image2" src="./assets/img/intern2.jpg" alt="Image 2">
+                    </div>
+                    <div class="gallery-item" onclick="openModal('image3')">
+                        <img id="image3" src="./assets/img/intern3.jpg" alt="Image 3">
+                    </div>
+                    <div class="gallery-item" onclick="openModal('image4')">
+                        <img id="image4" src="./assets/img/intern4.jpg" alt="Image 4">
+                    </div>
+                </div>
+                <div id="modal" class="modal">
+                    <span class="close" onclick="closeModal()">&times;</span>
+                    <img class="modal-content" id="img">
                 </div>
             </div>
         </div>
@@ -154,10 +223,10 @@
     <script>
         document.addEventListener("DOMContentLoaded", function() {
             const sections = document.querySelectorAll('.persist');
-            sections[0].scrollIntoView({ behavior: 'smooth' }); // year2021 섹션으로 스크롤
-        });
-        
-        document.querySelector('.main_page').style.backgroundImage = 'url(/assets/img/globe-white.png)';
+            sections[0].scrollIntoView({
+                behavior: 'smooth'
+            });
+        });//21년 인턴십 내용 띄우기
 
         let observer = new IntersectionObserver((entries) => {
             entries.forEach((entry) => {
@@ -167,7 +236,9 @@
                     entry.target.style.opacity = 0;
                 }
             });
-        }, { threshold: 0.5 });
+        }, {
+            threshold: 0.5
+        });
 
         let sections = document.querySelectorAll('.container > div');
         sections.forEach((section) => {
@@ -181,17 +252,32 @@
             isAutoScroll = !isAutoScroll;
             const button = document.querySelector('.Auto-button');
             button.innerText = `자동 스크롤 ${isAutoScroll ? 'ON' : 'OFF'}`;
-        }
+        }//자동 스크롤 기능 on off
         window.onload = function() {
             const sections = document.querySelectorAll('.persist');
             let index = 0;
             const scrollInterval = setInterval(() => {
                 if (isAutoScroll) {
-                    sections[index].scrollIntoView({ behavior:'smooth' });
+                    sections[index].scrollIntoView({
+                        behavior: 'smooth'
+                    });
                     index = (index + 1) % sections.length;
                 }
             }, 3000);
-        };
+        };//자동 스크롤 기능
+
+        function openModal(imageId) {
+            var modal = document.getElementById("modal");
+            var img = document.getElementById(imageId);
+            var modalImg = document.getElementById("img");
+            modal.style.display = "block";
+            modalImg.src = img.src;
+        }
+
+        function closeModal() {
+            var modal = document.getElementById("modal");
+            modal.style.display = "none";
+        }//사진 팝업 열고닫기
     </script>
 </body>
 
