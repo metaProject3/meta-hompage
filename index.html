@@ -67,7 +67,7 @@
                   <img src="assets/img/introduction-visual.png" alt="Welcome" />
                 </div>
                 <div class="intro--options">
-                  <a href="#0">
+                  <a href="./internship.html">
                     <h3>인턴십</h3>
                     <p>
                       각자 부족한 점을 멘토에게 배우며, 해커톤과 같은
@@ -75,7 +75,7 @@
                       단계
                     </p>
                   </a>
-                  <a href="#0">
+                  <a href="./hackathon.html">
                     <h3>해커톤</h3>
                     <p>
                       각자 1년 단위 프로젝트를 진행하여 프로그램을 제작하고 성과를 뽐내는 대회
@@ -95,7 +95,7 @@
               <div class="about">
                 <div class="about--banner">
                   <h2>프로젝트에서<br />창업까지<br />한 발짝씩</h2>
-                  <a href="#0">커리어
+                  <a href="#" id="career-link">커리어
                     <span>
                       <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
                         xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 150 118"
@@ -110,10 +110,10 @@
                   <img src="/assets/img/about-visual.png" alt="About Us" />
                 </div>
                 <div class="about--options">
-                  <a href="#0">
+                  <a href="./internship.html">
                     <h3>인턴쉽</h3>
                   </a>
-                  <a href="#0">
+                  <a href="./hackathon.html">
                     <h3>해커톤</h3>
                   </a>
                   <a href="#0">
@@ -383,6 +383,18 @@
       );
   </script>
   <script src="assets/js/functions-min.js"></script>
+  <script>
+    $(document).ready(function() {
+      $('#career-link').on('click', function(event) {
+        event.preventDefault();
+        $('.section').removeClass('section--is-active');
+        var careerSection = $('<li class="l-section section section--career section--is-active">');
+        careerSection.load('career.html', function() {
+          $('.main-content').append(careerSection);
+        });
+      });
+    });
+  </script>
 </body>
 
 </html>
