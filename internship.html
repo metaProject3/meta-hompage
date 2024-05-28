@@ -7,6 +7,15 @@
     <link rel="stylesheet" href="./assets/css/page.css" />
     <title>Internship</title>
     <style>
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 0;
+        }
+        .header h1 {
+            margin: 0;
+        }
         .Auto-button-container {
             position: fixed;
             top: 20px;
@@ -143,8 +152,12 @@
     </div>
 
     <div class="container">
-        <h1 style="position: fixed; top: 0; left: 0; background-color: #000000; padding: 10px; z-index: 1000;">META 인턴십</h1>
-
+        <div class="persist" id="header">
+            <h1>
+                <div style="color:rgba(169, 169, 169, 0.779)">커리어 </div>
+                <div>인턴십</div>
+            </h1>
+        </div>
     <div class="main_page"></div>
         <div class="persist" id="year2021">
             <div class="frame">
